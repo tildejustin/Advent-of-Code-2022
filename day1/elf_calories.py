@@ -1,4 +1,4 @@
-with open("input.txt", "r", encoding="utf8") as file:
+with open("input", "r", encoding="utf8") as file:
     text = file.readlines()
 
 counter: int = 0
