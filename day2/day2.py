@@ -16,52 +16,51 @@ WIN: int = 6
 
 
 def substitute(line: str) -> typing.List[int]:
-    # print(line)
-    line = line.replace("A", "1")
-    line = line.replace("X", "1")
-    line = line.replace("B", "2")
-    line = line.replace("Y", "2")
-    line = line.replace("C", "3")
-    line = line.replace("Z", "3")
-    line = line.strip()
+    line = line.replace("A", "1").replace("X", "1").replace("B", "2").replace("Y", "2").replace("C", "3").replace("Z", "3").strip()
     line_list = [int(line[0]), int(line[2])]
     # print(line)
     return line_list
 
+text: typing.List[int] = [i.strip() for i in text]
+text = list(map(substitute, text))
 
-count: int = 0
-for line in text:
-    numbers: str = substitute(line)
-    one = numbers[0]
-    two = numbers[1]
-    # part 1
-    # count += two
-    # if one == two:
-    #     count += DRAW
-    # elif one == ROCK and two == PAPER:
-    #     count += WIN
-    # elif one == PAPER and two == SCISSOR:
-    #     count += WIN
-    # elif one == SCISSOR and two == ROCK:
-    #     count += WIN
-    # part 2
+p1: int = 0
+for item in text:
+    one = item[0]
+    two = item[1]
+    p1 += two
+    if one == two:
+        p1 += DRAW
+    elif one == ROCK and two == PAPER:
+        p1 += WIN
+    elif one == PAPER and two == SCISSOR:
+        p1 += WIN
+    elif one == SCISSOR and two == ROCK:
+        p1 += WIN
+
+p2: int = 0
+for item in text:
+    one = item[0]
+    two = item[1]
+    # I don't understand that modulus stuff
     if two == LOSE_CONDITION:
         if one == ROCK:
-            count += SCISSOR
+            p2 += SCISSOR
         if one == PAPER:
-            count += ROCK
+            p2 += ROCK
         if one == SCISSOR:
-            count += PAPER
+            p2 += PAPER
     if two == DRAW_CONDITION:
-        count += one
-        count += DRAW
+        p2 += one
+        p2 += DRAW
     if two == WIN_CONDITION:
         if one == ROCK:
-            count += PAPER
+            p2 += PAPER
         elif one == PAPER:
-            count += SCISSOR
+            p2 += SCISSOR
         elif one == SCISSOR:
-            count += ROCK
-        count += WIN
+            p2 += ROCK
+        p2 += WIN
 
-print("Count is", count)
+print("part 1 is", p1)
+print("part 2 is", p2)

@@ -4,10 +4,6 @@ with open("input") as file:
 # look and weep
 # how tf does this work?
 parts = [[[int(num) for num in dashed_string.split("-")] for dashed_string in line.split(",")] for line in lines]
-print(parts)
-# parts[0] = [int(num) for num in parts[0].split("-")]
-# parts[1] = [int(num) for num in parts[1].split("-")]
-
 
 p1 = 0
 for part in parts:

@@ -1,19 +1,11 @@
-with open("input", "r", encoding="utf8") as file:
-    text = file.readlines()
+import typing
 
-counter: int = 0
-array: list = [[]]
-for number in text:
-    if number == "\n":
-        array.append([])
-    else:
-        # always adds to the latest array
-        array[len(array) - 1].append(int(number))
+with open("input") as f:
+    array: typing.List[int] = [sum([int(num) for num in i.split("\n") if num != ""]) for i in f.read().split("\n\n")]
 
+array.sort()
+p1: int = array[-1]
+p2: int = sum(array[-3:])
 
-sum_array: list = list(map(sum, array))
-print(max(sum_array))
-
-# part 2
-sum_array.sort()
-print(sum(sum_array[-3:]))
+print("part 1:", p1)
+print("part 2:", p2)
