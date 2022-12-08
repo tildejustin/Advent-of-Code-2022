@@ -1,7 +1,10 @@
 import typing
 
 with open("input") as f:
-    array: typing.List[int] = [sum([int(num) for num in i.split("\n") if num != ""]) for i in f.read().split("\n\n")]
+    array: typing.List[int] = [
+        sum([int(num) for num in i.split("\n") if num != ""])
+        for i in f.read().split("\n\n")
+    ]
 
 array.sort()
 p1: int = array[-1]

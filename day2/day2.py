@@ -16,10 +16,19 @@ WIN: int = 6
 
 
 def substitute(line: str) -> typing.List[int]:
-    line = line.replace("A", "1").replace("X", "1").replace("B", "2").replace("Y", "2").replace("C", "3").replace("Z", "3").strip()
+    line = (
+        line.replace("A", "1")
+        .replace("X", "1")
+        .replace("B", "2")
+        .replace("Y", "2")
+        .replace("C", "3")
+        .replace("Z", "3")
+        .strip()
+    )
     line_list = [int(line[0]), int(line[2])]
     # print(line)
     return line_list
+
 
 text: typing.List[int] = [i.strip() for i in text]
 text = list(map(substitute, text))

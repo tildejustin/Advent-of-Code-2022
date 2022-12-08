@@ -14,7 +14,7 @@ for line in open("input").readlines()[:8]:
     # print([line[index] for index in nums])
     for i, j in enumerate(nums):
         if line[j] != " ":
-            board[i].insert(0,line[j])
+            board[i].insert(0, line[j])
 
 # board for each part
 # FUCK YOU SHALLOW COPY
@@ -22,26 +22,26 @@ board2 = copy.deepcopy(board)
 print(board, "\n")
 
 # part 1
-for x,y,z in commands:
+for x, y, z in commands:
     for i in range(x):
         board[z - 1].append(board[y - 1].pop())
-p1 = "".join([line[len(line)-1] for line in board])
+p1 = "".join([line[len(line) - 1] for line in board])
 
 # part 2
-for x,y,z in commands:
+for x, y, z in commands:
     # print(x, board2[y - 1][-x:], "from", board2[y-1], "to", board2[z-1])
     board2[z - 1].extend(board2[y - 1][-x:])
     board2[y - 1] = board2[y - 1][:-x]
     # print("result", board2[y-1], board2[z-1])
-p2 = "".join([line[len(line)-1] for line in board2])
+p2 = "".join([line[len(line) - 1] for line in board2])
 
 # print board vertically
 def printboard(board: typing.List[list]) -> None:
     largest = max(list(map(len, board)))
-    for i in range(largest - 1, - 1, -1):
+    for i in range(largest - 1, -1, -1):
         for array in board:
             try:
-                print(array[i] , end="")
+                print(array[i], end="")
             except IndexError:
                 print(" ", end="")
             print(" ", end="")
